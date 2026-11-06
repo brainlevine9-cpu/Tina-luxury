@@ -320,7 +320,7 @@
         </div>
 
 
-        <form class="booking-form" action="#" method="POST">
+        <form class="booking-form" id="bookingForm">
 
             <div class="form-group">
 
@@ -460,7 +460,63 @@
 
     </footer>
 
+    <script>
+
+const bookingForm = document.getElementById("bookingForm");
+
+bookingForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    // Tina Luxury WhatsApp number
+    const phoneNumber = "2349155471596";
+
+    // Get customer information
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const service = document.getElementById("service").value;
+    const date = document.getElementById("date").value;
+    const message = document.getElementById("message").value;
+
+    // Create booking message
+    const whatsappMessage =
+
+`Hello Tina Luxury!
+
+I would like to make a booking.
+
+Customer Details:
+
+Full Name: ${name}
+
+Email Address: ${email}
+
+Phone Number: ${phone}
+
+Selected Service: ${service}
+
+Preferred Date: ${date}
+
+Additional Information: ${message}
+
+I look forward to hearing from you.
+
+Thank you!`;
+
+    // Encode message
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+
+    // Open WhatsApp
+    const whatsappURL =
+    `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappURL, "_blank");
+
+});
+
+</script>
+
 
 </body>
-
 </html>
